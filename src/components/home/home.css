@@ -1,0 +1,119 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  gap: 10px;
+}
+
+.intro h1 {
+  text-align: center;
+}
+
+.intro h1 span {
+  color: var(--primary-color);
+}
+
+.intro p {
+  font-size: 16px;
+}
+
+.intro a.btn-primary {
+  margin-top: 15px;
+  padding: 20px 50px;
+  border-radius: 40px;
+}
+
+.intro a.btn-primary::before {
+  border-radius: 28px;
+}
+
+/* ------------------
+    Image Styling
+    --------------- */
+.home-image img {
+  width: 100%;
+  margin-top: -10px;
+  z-index: 99;
+  position: relative;
+}
+
+/* ------------------------
+    Floating Design Styling
+    ------------------------ */
+.floating {
+  position: absolute;
+  opacity: 0.7;
+}
+
+.floating.image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 65px;
+  height: 90px;
+}
+
+.floating.time {
+  background-image: url("../../assets/time.png");
+  left: 35%;
+  top: 30%;
+}
+
+.floating.paper {
+  background-image: url("../../assets/paper.png");
+  top: 27%;
+  right: 25%;
+}
+
+.floating.color {
+  border-radius: 50%;
+  border: 1px solid var(--black-color);
+}
+
+.floating.color.blue {
+  background-color: rgba(61, 135, 245, 0.4);
+  width: 65px;
+  height: 65px;
+  top: 75%;
+  left: 10%;
+}
+
+.floating.color.green {
+  background-color: rgba(131, 245, 61, 0.4);
+  width: 18px;
+  height: 18px;
+  top: 25%;
+  left: 15%;
+}
+
+.floating.color.purple {
+  background-color: rgba(175, 61, 245, 0.4);
+  width: 34px;
+  height: 34px;
+  top: 45%;
+  left: 25%;
+}
+
+.floating.color.yellow {
+  background-color: rgba(245, 216, 61, 0.5);
+  width: 41px;
+  height: 41px;
+  top: 55%;
+  right: 20%;
+}
+
+.floating.color.light {
+  background-color: rgba(61, 239, 245, 0.6);
+  width: 70px;
+  height: 70px;
+  top: 95%;
+  right: 10%;
+}

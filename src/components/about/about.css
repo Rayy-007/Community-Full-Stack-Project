@@ -1,0 +1,40 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-above {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(3vw + 1rem);
+
+  gap: calc(1vw + 1rem);
+}
+
+.about-above .text {
+  width: 50%;
+}
+
+.about-above .about-img {
+  width: 40%;
+}
+.about-above .about-img img {
+  width: 100%;
+}
+
+/* -------------- 
+    Below Images
+    ------------- */
+.about-below {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin-left: 10%;
+}
+
+.about-below img {
+  width: 100%;
+}
