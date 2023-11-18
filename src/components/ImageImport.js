@@ -6,6 +6,8 @@ import aboutBoy from "../assets/about-boy.png";
 import aboutGirl from "../assets/about-girl.png";
 import contactGirl from "../assets/contact-girl.png";
 import contactArrow from "../assets/contact-arrow.png";
+import termsBoy from "../assets/terms-boy.png";
+import termsGirl from "../assets/term-girl.png";
 
 export {
   Logo,
@@ -16,4 +18,6 @@ export {
   aboutGirl,
   contactGirl,
   contactArrow,
+  termsBoy,
+  termsGirl,
 };

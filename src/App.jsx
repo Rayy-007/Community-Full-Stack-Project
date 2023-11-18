@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import { Home, About, Contact } from "./components/PageImport";
+import Terms from "./components/terms/Terms";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
           </Route>
         </Routes>
       </BrowserRouter>

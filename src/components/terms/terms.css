@@ -1,0 +1,21 @@
+.terms-condition {
+  display: flex;
+  flex-direction: column;
+  gap: calc(2vw + 1rem);
+  width: 80%;
+  margin-inline: auto;
+}
+
+.first {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.second,
+.third {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
