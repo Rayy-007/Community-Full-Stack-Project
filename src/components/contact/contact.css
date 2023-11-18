@@ -1,0 +1,45 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-above {
+  display: flex;
+  justify-content: end;
+  gap: calc(4vw + 4rem);
+  align-items: center;
+  padding-inline: calc(7vw + 2rem);
+}
+
+/* ------------------
+    Contact Below
+    ---------------- */
+.contact-below {
+  background-color: var(--primary-color);
+  padding: calc(3vw + 2rem);
+  width: 80%;
+  margin-inline: auto;
+  border-radius: 30px;
+  position: relative;
+}
+
+.contact-below .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: self-start;
+  gap: 20px;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 0px;
+  right: 50px;
+
+  background-image: url("../../assets/contact-arrow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 500px;
+  height: 400px;
+}
