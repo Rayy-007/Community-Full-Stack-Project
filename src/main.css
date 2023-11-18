@@ -6,14 +6,14 @@
   --white-color: #fffdff;
   --black-color: #0c0f14;
 
-  /* 38 → 26 */
-  --font-title: clamp(1.625rem, 2.6359rem + -1.3043vw, 2.375rem);
+  /* 38px → 26px */
+  --font-title: clamp(1.625rem, 1.3641rem + 1.3043vw, 2.375rem);
 
-  /* 28 → 22 */
-  --font-sub-title: clamp(1.375rem, 1.8804rem + -0.6522vw, 1.75rem);
+  /* 28px → 22px */
+  --font-sub-title: clamp(1.375rem, 1.2446rem + 0.6522vw, 1.75rem);
 
-  /* 20 → 16 */
-  --font-normal: clamp(1rem, 1.337rem + -0.4348vw, 1.25rem);
+  /* 20px → 16px */
+  --font-normal: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
 }
 
 *,
@@ -37,10 +37,94 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: var(--white-color);
   overflow-x: hidden;
+  color: var(--black-color);
 }
 
+a {
+  color: var(--black-color);
+  font-size: var(--font-normal);
+}
+
+/* ===================
+    Website container
+    ================== */
 #app {
-  width: min(95%, 90%);
+  width: min(85%, 1400px);
   margin: 0 auto;
-  background-color: rebeccapurple;
+  background-color: aliceblue;
+}
+
+/* ===================
+    Button Styling
+    ================== */
+.btn {
+  padding: 10px 40px;
+  font-size: var(--font-normal);
+  font-weight: 600;
+  border-radius: 20px;
+
+  position: relative;
+  transition: 0.3s ease-in-out;
+  z-index: 33; /* if I don't give this z-index, ::Before will not appear*/
+}
+
+/* -----------------
+    Button Primary
+    ---------------- */
+.btn-primary {
+  border: 2px solid var(--secondary-color);
+}
+
+.btn-primary::before {
+  border-radius: 18px;
+
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  transition: 0.3s ease-in-out;
+  z-index: -11;
+}
+
+.btn-primary:hover::before,
+.btn-outline::before {
+  width: 15%;
+  height: 40%;
+  transform: rotate(-40deg);
+}
+
+.btn-primary:hover {
+  color: var(--secondary-color);
+}
+/* ------------------
+Button Outline
+---------------- */
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline::before {
+  border-radius: 18px;
+
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-color: var(--primary-color);
+  transition: 0.3s ease-in-out;
+  z-index: -11;
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0);
+}
+
+.btn-outline:hover {
+  color: var(--white-color);
 }
