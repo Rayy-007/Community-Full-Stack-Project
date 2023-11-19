@@ -166,3 +166,37 @@ textarea {
 textarea {
   resize: none;
 }
+
+/* ========================
+    Social Form Styling
+    ======================= */
+.social {
+  border-radius: 10px;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-weight: 600;
+  transition: 0.09s ease-in;
+}
+
+.social:hover {
+  transform: translateY(-3px);
+}
+
+.google {
+  background-color: var(--white-color);
+}
+
+.facebook {
+  background-color: #1877f2;
+  color: var(--white-color);
+}
+
+.option a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+}

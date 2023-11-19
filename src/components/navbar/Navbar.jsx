@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
 
       <div className="cta-container">
-        <a className="btn btn-primary" href="/regiser">
+        <a className="btn btn-primary" href="/register">
           Register
         </a>
         <a className="btn btn-outline" href="/login">

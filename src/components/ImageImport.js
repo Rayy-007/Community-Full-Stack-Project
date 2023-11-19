@@ -8,6 +8,9 @@ import contactGirl from "../assets/contact-girl.png";
 import contactArrow from "../assets/contact-arrow.png";
 import termsBoy from "../assets/terms-boy.png";
 import termsGirl from "../assets/term-girl.png";
+import FBLogo from "../assets/facebook.png";
+import GGLogo from "../assets/google.png";
+import registerPeople from "../assets/register-people.png";
 
 export {
   Logo,
@@ -20,4 +23,7 @@ export {
   contactArrow,
   termsBoy,
   termsGirl,
+  FBLogo,
+  GGLogo,
+  registerPeople,
 };
