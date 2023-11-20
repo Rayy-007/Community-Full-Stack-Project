@@ -11,6 +11,7 @@ import termsGirl from "../assets/term-girl.png";
 import FBLogo from "../assets/facebook.png";
 import GGLogo from "../assets/google.png";
 import registerPeople from "../assets/register-people.png";
+import loginPoeple from "../assets/login-people.png";
 
 export {
   Logo,
@@ -26,4 +27,5 @@ export {
   FBLogo,
   GGLogo,
   registerPeople,
+  loginPoeple,
 };
