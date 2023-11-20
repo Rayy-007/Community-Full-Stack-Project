@@ -1,0 +1,21 @@
+footer {
+  margin-top: -3.9px;
+  background-color: rgba(61, 135, 245, 0.3);
+  padding-inline: 5vw;
+}
+
+footer .line {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 2px;
+  margin-inline: auto;
+}
+
+footer .me {
+  text-align: center;
+  padding: 2vw;
+}
+
+footer .me a {
+  text-decoration: underline;
+}
