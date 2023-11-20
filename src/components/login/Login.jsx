@@ -25,11 +25,11 @@ const Login = () => {
         <div className="social-form">
           <a className="social google" href="/google">
             <img src={GGLogo} alt="Google Logo" />
-            <span>Connect with Google</span>
+            <span>Login with Google</span>
           </a>
           <a className="social facebook" href="/facebook">
             <img src={FBLogo} alt="Facebook Logo" />
-            <span>Connect with Facebook</span>
+            <span>Login with Facebook</span>
           </a>
           <p className="option">
             Does not have an account? <a href="/register">Register Here</a>
