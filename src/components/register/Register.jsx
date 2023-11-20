@@ -3,7 +3,7 @@ import { FBLogo, GGLogo, registerPeople } from "../ImageImport";
 
 const Register = () => {
   return (
-    <section className="register-container">
+    <section className="login-container">
       <div className="left">
         <div className="left-image">
           <img src={registerPeople} alt="Animated People" />

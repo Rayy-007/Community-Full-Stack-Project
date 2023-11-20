@@ -1,6 +1,5 @@
 .register-container {
   display: flex;
-  /* justify-content: space-evenly; */
   gap: calc(3vw + 1rem);
 }
 
@@ -9,7 +8,6 @@
     -------------------- */
 .left {
   width: 30%;
-  /* opacity: 0.8; */
   z-index: -999;
 }
 
@@ -50,8 +48,9 @@
   margin-bottom: 30px;
 }
 
-.register-form .text h2 {
-  margin-bottom: 10px;
+.register-form .text p {
+  margin-top: 10px;
+  font-size: 15px;
 }
 
 .register-form form {
