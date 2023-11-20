@@ -1,7 +1,19 @@
 import "./register.css";
 import { FBLogo, GGLogo, registerPeople } from "../ImageImport";
+import { useEffect } from "react";
 
-const Register = () => {
+const Register = ({ setShowFooter }) => {
+  useEffect(() => {
+    // This will be executed after the component is mounted
+    setShowFooter(false);
+
+    // Return a cleanup function if needed
+    return () => {
+      // This will be executed when the component is unmounted
+      setShowFooter(true);
+    };
+  }, [setShowFooter]);
+
   return (
     <section className="login-container">
       <div className="left">

@@ -9,8 +9,10 @@ import {
   Footer,
 } from "./components/PageImport";
 import Terms from "./components/terms/Terms";
+import { useState } from "react";
 
 const App = () => {
+  const [showFooter, setShowFooter] = useState(true);
   return (
     <>
       <div id="app">
@@ -21,13 +23,19 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms" element={<Terms />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
+              <Route
+                path="/register"
+                element={<Register setShowFooter={setShowFooter} />}
+              />
+              <Route
+                path="/login"
+                element={<Login setShowFooter={setShowFooter} />}
+              />
             </Route>
           </Routes>
         </BrowserRouter>
       </div>
-      <Footer />
+      {showFooter && <Footer />}
     </>
   );
 };
