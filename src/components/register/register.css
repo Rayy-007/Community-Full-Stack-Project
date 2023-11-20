@@ -29,7 +29,7 @@
 .left-image img {
   z-index: -66;
   width: 100%;
-  max-height: 70vh;
+  max-height: 75vh;
   opacity: 0.8;
 }
 
@@ -47,7 +47,11 @@
 
 .register-form .text {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.register-form .text h2 {
+  margin-bottom: 10px;
 }
 
 .register-form form {
