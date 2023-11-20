@@ -23,7 +23,8 @@ nav .logo-container img {
   transition: 0.09s;
 }
 
-.nav-links ul li a:hover {
+.nav-links ul li a:hover,
+.active {
   font-weight: 700;
   color: var(--primary-color);
 }
