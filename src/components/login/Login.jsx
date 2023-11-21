@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import FacebookLogin from "@greatsumini/react-facebook-login";
 
 const Login = ({ setShowFooter, onFacebookLogin }) => {
+  const onHandleFacebookLogin = (response) => {
+    onFacebookLogin(response);
+  };
+
   useEffect(() => {
     // This will be executed after the component is mounted
     setShowFooter(false);
@@ -46,7 +50,7 @@ const Login = ({ setShowFooter, onFacebookLogin }) => {
             appId="280211087819312"
             autoLoad={false}
             fields="name, email, picture"
-            // onSuccess={onHandleFacebookLogin}
+            onSuccess={onHandleFacebookLogin}
             onProfileSuccess={(data) => {}}
             // console.log("Get Profile Success", data);
           >
