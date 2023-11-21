@@ -9,10 +9,11 @@ import {
   Footer,
 } from "./components/PageImport";
 import Terms from "./components/terms/Terms";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const [showFooter, setShowFooter] = useState(true);
+
   return (
     <>
       <div id="app">

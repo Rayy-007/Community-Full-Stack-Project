@@ -1,8 +1,9 @@
 import "./login.css";
 import { loginPoeple, GGLogo, FBLogo } from "../ImageImport";
 import { useEffect } from "react";
+import FacebookLogin from "@greatsumini/react-facebook-login";
 
-const Login = ({ setShowFooter }) => {
+const Login = ({ setShowFooter, onFacebookLogin }) => {
   useEffect(() => {
     // This will be executed after the component is mounted
     setShowFooter(false);
@@ -39,10 +40,19 @@ const Login = ({ setShowFooter }) => {
             <img src={GGLogo} alt="Google Logo" />
             <span>Login with Google</span>
           </a>
-          <a className="social facebook" href="/facebook">
+          <FacebookLogin
+            className="social facebook"
+            href="/facebook-login"
+            appId="280211087819312"
+            autoLoad={false}
+            fields="name, email, picture"
+            // onSuccess={onHandleFacebookLogin}
+            onProfileSuccess={(data) => {}}
+            // console.log("Get Profile Success", data);
+          >
             <img src={FBLogo} alt="Facebook Logo" />
             <span>Login with Facebook</span>
-          </a>
+          </FacebookLogin>
           <p className="option">
             Does not have an account? <a href="/register">Register Here</a>
           </p>
