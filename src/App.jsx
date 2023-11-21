@@ -14,30 +14,6 @@ import { useState } from "react";
 const App = () => {
   const [showFooter, setShowFooter] = useState(true);
 
-  const onHandleFacebookLogin = (fbUserData) => {
-    fetch("http://localhost:8080/api/facebook-login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        accessToken: fbUserData.accessToken,
-      }),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Received response from server:", data);
-      })
-      .catch((err) => {
-        console.error("Error during fetch:", err);
-      });
-  };
-
   return (
     <>
       <div id="app">
