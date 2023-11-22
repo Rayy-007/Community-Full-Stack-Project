@@ -2,12 +2,15 @@ import "./login.css";
 import { loginPoeple, GGLogo, FBLogo } from "../ImageImport";
 import { useEffect } from "react";
 import FacebookLogin from "@greatsumini/react-facebook-login";
+import GoogleLoginButton from "../social-login/GoogleLoginButton";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-const Login = ({ setShowFooter, onFacebookLogin }) => {
-  const onHandleFacebookLogin = (response) => {
-    onFacebookLogin(response);
-  };
-
+const Login = ({
+  setShowFooter,
+  onHandleFacebookLogin,
+  onHandleGoogleLogin,
+}) => {
+  // Not Shwoing Footer in Login Page
   useEffect(() => {
     // This will be executed after the component is mounted
     setShowFooter(false);
@@ -19,6 +22,25 @@ const Login = ({ setShowFooter, onFacebookLogin }) => {
     };
   }, [setShowFooter]);
 
+  // Handling Facebook Login
+  const onHandleFacebookLoginSuccess = (response) => {
+    onHandleFacebookLogin(response);
+  };
+
+  // Handling Google Login
+  // Google Client ID
+  const clientId =
+    "661359056290-i5sf4uhvskg53h0jhq41eclnh9oa868q.apps.googleusercontent.com";
+
+  const onHandleGoogleLoginSuccess = (response) => {
+    onHandleGoogleLogin(response);
+    console.log("Sucess ---> ", response);
+  };
+
+  const onHandleGoogleLoginFail = (error) => {
+    console.log("Fail ---> ", error);
+  };
+
   return (
     <section className="login-container">
       <div className="left">
@@ -26,6 +48,7 @@ const Login = ({ setShowFooter, onFacebookLogin }) => {
           <img src={loginPoeple} alt="Animated People" />
         </div>
       </div>
+
       <div className="right">
         <div className="login-form">
           <div className="text">
@@ -39,24 +62,29 @@ const Login = ({ setShowFooter, onFacebookLogin }) => {
           </form>
         </div>
         <div className="orLine">Or</div>
+
         <div className="social-form">
-          <a className="social google" href="/google">
-            <img src={GGLogo} alt="Google Logo" />
-            <span>Login with Google</span>
-          </a>
+          <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLoginButton
+              onHandleSuccess={onHandleGoogleLoginSuccess}
+              onHandleFail={onHandleGoogleLoginFail}
+            />
+          </GoogleOAuthProvider>
+
           <FacebookLogin
             className="social facebook"
             href="/facebook-login"
             appId="280211087819312"
             autoLoad={false}
             fields="name, email, picture"
-            onSuccess={onHandleFacebookLogin}
+            onSuccess={onHandleFacebookLoginSuccess}
             onProfileSuccess={(data) => {}}
             // console.log("Get Profile Success", data);
           >
             <img src={FBLogo} alt="Facebook Logo" />
             <span>Login with Facebook</span>
           </FacebookLogin>
+
           <p className="option">
             Does not have an account? <a href="/register">Register Here</a>
           </p>
