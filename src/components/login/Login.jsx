@@ -34,7 +34,7 @@ const Login = ({
 
   const onHandleGoogleLoginSuccess = (response) => {
     onHandleGoogleLogin(response);
-    console.log("Sucess ---> ", response);
+    console.log("Sucess ---> ");
   };
 
   const onHandleGoogleLoginFail = (error) => {
