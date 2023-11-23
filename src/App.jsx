@@ -20,8 +20,7 @@ const App = ({ setLoginUser }) => {
 
   // Sending Facebook Data to the Server
   const onHandleFacebookLogin = (fbUserData) => {
-    setLoginUser(fbUserData);
-    console.log(fbUserData);
+    // console.log(fbUserData);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -43,7 +42,9 @@ const App = ({ setLoginUser }) => {
         }
         return res.json();
       })
-      .then((data) => {})
+      .then((data) => {
+        setLoginUser(data);
+      })
       .catch((err) => {
         console.error("Error during fetch:", err);
       });
@@ -51,7 +52,6 @@ const App = ({ setLoginUser }) => {
 
   // Sending Google data to the Server
   const onHandleGoogleLogin = (ggUserdata) => {
-    setLoginUser(ggUserdata);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -74,7 +74,7 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
-        console.log("Received Google Data from sever GG", data);
+        setLoginUser(data);
       })
       .catch((err) => {
         console.error("Error during fetch: ", err);

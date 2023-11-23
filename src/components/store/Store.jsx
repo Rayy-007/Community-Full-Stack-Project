@@ -141,7 +141,7 @@ const Store = ({ loginUser }) => {
             <tbody>
               <tr>
                 <td>{loginUser.name}</td>
-                <td>{loginUser.name}</td>
+                <td>{loginUser.email}</td>
                 <td>Mandalay</td>
                 <td>
                   <a className="warning" href="/store/edit">
@@ -197,7 +197,8 @@ const Store = ({ loginUser }) => {
                 src={`https://graph.facebook.com/${loginUser.picture}/picture`}
                 alt="profile-image"
               /> */}
-              <img src={Image1} alt="image" />
+              {/* <img src={Image1} alt="image" /> */}
+              <img src={loginUser.picutre} alt="" />
             </div>
           </div>
           {/* -----
