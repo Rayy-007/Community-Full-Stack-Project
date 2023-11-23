@@ -9,7 +9,9 @@ const FacebookLoginButton = ({ onHandleFacebookLoginSuccess }) => {
       appId="280211087819312"
       autoLoad={false}
       fields="name, email, picture"
-      onProfileSuccess={(data) => {}}
+      onProfileSuccess={(data) => {
+        // console.log(data);
+      }}
       onSuccess={onHandleFacebookLoginSuccess}
     >
       <img src={FBLogo} alt="Facebook Logo" />

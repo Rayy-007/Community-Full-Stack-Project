@@ -9,6 +9,7 @@ const Login = ({
   setShowFooter,
   onHandleFacebookLogin,
   onHandleGoogleLogin,
+  isLoading,
 }) => {
   // Not Shwoing Footer in Login Page
   useEffect(() => {
@@ -62,22 +63,26 @@ const Login = ({
         </div>
         <div className="orLine">Or</div>
 
-        <div className="social-form">
-          <GoogleOAuthProvider clientId={clientId}>
-            <GoogleLoginButton
-              onHandleSuccess={onHandleGoogleLoginSuccess}
-              onHandleFail={onHandleGoogleLoginFail}
+        {isLoading ? (
+          <div>Loading......</div>
+        ) : (
+          <div className="social-form">
+            <GoogleOAuthProvider clientId={clientId}>
+              <GoogleLoginButton
+                onHandleSuccess={onHandleGoogleLoginSuccess}
+                onHandleFail={onHandleGoogleLoginFail}
+              />
+            </GoogleOAuthProvider>
+
+            <FacebookLoginButton
+              onHandleFacebookLoginSuccess={onHandleFacebookLoginSuccess}
             />
-          </GoogleOAuthProvider>
 
-          <FacebookLoginButton
-            onHandleFacebookLoginSuccess={onHandleFacebookLoginSuccess}
-          />
-
-          <p className="option">
-            Does not have an account? <a href="/register">Register Here</a>
-          </p>
-        </div>
+            <p className="option">
+              Does not have an account? <a href="/register">Register Here</a>
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
