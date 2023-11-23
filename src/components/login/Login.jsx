@@ -1,9 +1,9 @@
 import "./login.css";
-import { loginPoeple, GGLogo, FBLogo } from "../ImageImport";
-import { useEffect } from "react";
-import FacebookLogin from "@greatsumini/react-facebook-login";
+import { loginPoeple } from "../ImageImport";
+import { useEffect, useState } from "react";
 import GoogleLoginButton from "../social-login/GoogleLoginButton";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import FacebookLoginButton from "../social-login/FacebookLoginButton";
 
 const Login = ({
   setShowFooter,
@@ -12,20 +12,14 @@ const Login = ({
 }) => {
   // Not Shwoing Footer in Login Page
   useEffect(() => {
-    // This will be executed after the component is mounted
-    setShowFooter(false);
+    setShowFooter(false); // This will be executed after the component is mounted
 
-    // Return a cleanup function if needed
     return () => {
-      // This will be executed when the component is unmounted
-      setShowFooter(true);
+      // Return a cleanup function if needed
+
+      setShowFooter(true); // This will be executed when the component is unmounted
     };
   }, [setShowFooter]);
-
-  // Handling Facebook Login
-  const onHandleFacebookLoginSuccess = (response) => {
-    onHandleFacebookLogin(response);
-  };
 
   // Handling Google Login
   // Google Client ID
@@ -39,6 +33,11 @@ const Login = ({
 
   const onHandleGoogleLoginFail = (error) => {
     console.log("Fail ---> ", error);
+  };
+
+  // Handling Facebook Login
+  const onHandleFacebookLoginSuccess = (response) => {
+    onHandleFacebookLogin(response);
   };
 
   return (
@@ -71,19 +70,9 @@ const Login = ({
             />
           </GoogleOAuthProvider>
 
-          <FacebookLogin
-            className="social facebook"
-            href="/facebook-login"
-            appId="280211087819312"
-            autoLoad={false}
-            fields="name, email, picture"
-            onSuccess={onHandleFacebookLoginSuccess}
-            onProfileSuccess={(data) => {}}
-            // console.log("Get Profile Success", data);
-          >
-            <img src={FBLogo} alt="Facebook Logo" />
-            <span>Login with Facebook</span>
-          </FacebookLogin>
+          <FacebookLoginButton
+            onHandleFacebookLoginSuccess={onHandleFacebookLoginSuccess}
+          />
 
           <p className="option">
             Does not have an account? <a href="/register">Register Here</a>
