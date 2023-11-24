@@ -84,6 +84,68 @@ const App = ({ setLoginUser }) => {
       });
   };
 
+  // Sending Google data to the Server
+  const onHandleRegister = (registerData) => {
+    console.log(registerData);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/store");
+    }, 3000); // Adjust the delay time as needed
+
+    fetch("http://localhost:8080/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registerData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Register was Not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error("Error during fetch: ", err);
+      });
+  };
+
+  // Sending login data to the server
+  const onHandleLogin = (loginData) => {
+    console.log(loginData);
+    setIsLoading(true);
+
+    fetch("http://localhost:8080/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Authentication failed");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data, "--> Login Success");
+        setIsLoading(false);
+        navigate("/store");
+      })
+      .catch((err) => {
+        console.error("Error during login: ", err);
+        setIsLoading(false);
+        alert(
+          "Authentication failed. Please check your username and password."
+        );
+      });
+  };
+
   return (
     <>
       <div id="app">
@@ -95,7 +157,15 @@ const App = ({ setLoginUser }) => {
             <Route path="/terms" element={<Terms />} />
             <Route
               path="/register"
-              element={<Register setShowFooter={setShowFooter} />}
+              element={
+                <Register
+                  setShowFooter={setShowFooter}
+                  onHandleFacebookLogin={onHandleFacebookLogin}
+                  onHandleGoogleLogin={onHandleGoogleLogin}
+                  onHandleRegister={onHandleRegister}
+                  isLoading={isLoading}
+                />
+              }
             />
             <Route
               path="/login"
@@ -105,6 +175,7 @@ const App = ({ setLoginUser }) => {
                   onHandleFacebookLogin={onHandleFacebookLogin}
                   onHandleGoogleLogin={onHandleGoogleLogin}
                   isLoading={isLoading}
+                  onHandleLogin={onHandleLogin}
                 />
               }
             />

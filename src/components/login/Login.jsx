@@ -10,6 +10,7 @@ const Login = ({
   onHandleFacebookLogin,
   onHandleGoogleLogin,
   isLoading,
+  onHandleLogin,
 }) => {
   // Not Shwoing Footer in Login Page
   useEffect(() => {
@@ -21,6 +22,25 @@ const Login = ({
       setShowFooter(true); // This will be executed when the component is unmounted
     };
   }, [setShowFooter]);
+
+  // State to manage form data
+  const [formData, setFormData] = useState({
+    name: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Form data submitted:", formData);
+
+    onHandleLogin(formData);
+  };
 
   // Handling Google Login
   // Google Client ID
@@ -55,16 +75,33 @@ const Login = ({
             <h2>Welcome Back!</h2>
             <p>Login!</p>
           </div>
-          <form>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <button className="btn btn-primary">Login</button>
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleInputChange}
+              required
+            />
+
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
           </form>
         </div>
         <div className="orLine">Or</div>
 
         {isLoading ? (
-          <div class="lds-roller">
+          <div className="lds-roller">
             <div></div>
             <div></div>
             <div></div>
