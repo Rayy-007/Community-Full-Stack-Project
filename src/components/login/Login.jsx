@@ -37,8 +37,6 @@ const Login = ({
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Form data submitted:", formData);
-
     onHandleLogin(formData);
   };
 

@@ -20,7 +20,6 @@ const App = ({ setLoginUser }) => {
 
   // Sending Facebook Data to the Server
   const onHandleFacebookLogin = (fbUserData) => {
-    // console.log(fbUserData);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -43,7 +42,6 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setLoginUser(data);
       })
       .catch((err) => {
@@ -76,7 +74,6 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setLoginUser(data);
       })
       .catch((err) => {
@@ -107,7 +104,8 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
+        console.log("Register Success");
       })
       .catch((err) => {
         console.error("Error during fetch: ", err);
@@ -116,7 +114,6 @@ const App = ({ setLoginUser }) => {
 
   // Sending login data to the server
   const onHandleLogin = (loginData) => {
-    console.log(loginData);
     setIsLoading(true);
 
     fetch("http://localhost:8080/api/login", {
@@ -133,7 +130,7 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data, "--> Login Success");
+        console.log("--> Login Success");
         setIsLoading(false);
         navigate("/store");
       })

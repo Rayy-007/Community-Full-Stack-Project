@@ -169,7 +169,7 @@ const Register = ({
             />
 
             <p className="option">
-              Does not have an account? <a href="/register">Register Here</a>
+              Already have an account? <a href="/register">Login Here</a>
             </p>
           </div>
         )}

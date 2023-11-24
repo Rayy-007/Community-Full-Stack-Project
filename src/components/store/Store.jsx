@@ -1,4 +1,6 @@
 import "./store.css";
+import Image1 from "../../assets/image3.png";
+import { Link, NavLink } from "react-router-dom";
 
 import { Logo } from "../ImageImport";
 import { useEffect, useState } from "react";
@@ -13,12 +15,12 @@ const Store = () => {
       });
   }, []);
 
+  //  For Dark Theme And Light Theme
   useEffect(() => {
     const sideMenu = document?.querySelector("aside");
     const menuBtn = document?.querySelector("#menu-btn");
     const closeBtn = document?.querySelector("#close-btn");
     const themeToggler = document?.querySelector("#toggler");
-    // const store = document?.querySelector(".store");
 
     // Color theme
     const themeTogglerColor = document?.querySelector("#color");
@@ -66,6 +68,7 @@ const Store = () => {
     };
   }, []);
 
+  //  Store list for Table
   const storeLists = storeData?.map((store, index) => {
     return (
       <tr key={index}>
@@ -95,6 +98,7 @@ const Store = () => {
     );
   });
 
+  //  Recent Update lists for Right Side Bar
   const updateLists = storeData?.map((store, index) => {
     return (
       <div key={index} className="update">
@@ -104,8 +108,10 @@ const Store = () => {
               src={`http://graph.facebook.com/${store?.userID}/picture`}
               alt="Facebook Profile"
             />
-          ) : (
+          ) : store?.userType == "Google" ? (
             <img src={store?.picture} alt="Google Profile" />
+          ) : (
+            <img src={Image1} alt="Normal Profile" />
           )}
         </div>
         <div className="message">
@@ -158,7 +164,7 @@ const Store = () => {
             <span className="material-icons-sharp">add</span>
             <h3>Add Store</h3>
           </a>
-          <a href="#" className="active">
+          <a href="/" className="active">
             <span className="material-icons-sharp">logout</span>
             <h3>Logout</h3>
           </a>
@@ -290,11 +296,13 @@ const Store = () => {
                   }/picture`}
                   alt="Facebook Profile"
                 />
-              ) : (
+              ) : storeData[storeData.length - 1]?.userType == "Google" ? (
                 <img
                   src={storeData[storeData.length - 1]?.picture}
                   alt="Google Profile"
                 />
+              ) : (
+                <img src={Image1} alt="Normal Profile" />
               )}
             </div>
           </div>
