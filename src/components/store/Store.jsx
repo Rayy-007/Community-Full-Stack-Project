@@ -1,21 +1,69 @@
 import "./store.css";
-import Image1 from "../../assets/image1.png";
-import Image2 from "../../assets/image2.png";
-import Image3 from "../../assets/image3.png";
-import Image4 from "../../assets/image4.png";
 
 import { Logo } from "../ImageImport";
 import { useEffect, useState } from "react";
-const Store = ({ loginUser }) => {
+const Store = () => {
   const [storeData, setStoreData] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8080/store")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setStoreData(data);
       });
+  }, []);
+
+  useEffect(() => {
+    const sideMenu = document?.querySelector("aside");
+    const menuBtn = document?.querySelector("#menu-btn");
+    const closeBtn = document?.querySelector("#close-btn");
+    const themeToggler = document?.querySelector("#toggler");
+    // const store = document?.querySelector(".store");
+
+    // Color theme
+    const themeTogglerColor = document?.querySelector("#color");
+
+    const toggleBlueTheme = () => {
+      document.body.classList.toggle("blue-theme-variable");
+
+      themeTogglerColor
+        .querySelector("span:nth-child(1)")
+        .classList.toggle("set");
+      themeTogglerColor
+        .querySelector("span:nth-child(2)")
+        .classList.toggle("set-1");
+    };
+
+    const showSidebar = () => {
+      sideMenu.style.display = "block";
+    };
+
+    const closeSidebar = () => {
+      sideMenu.style.display = "none";
+    };
+
+    const toggleDarkTheme = () => {
+      document.body.classList.toggle("dark-theme-variables");
+      themeToggler
+        .querySelector("span:nth-child(1)")
+        .classList.toggle("active");
+      themeToggler
+        .querySelector("span:nth-child(2)")
+        .classList.toggle("active");
+    };
+
+    themeTogglerColor.addEventListener("click", toggleBlueTheme);
+    menuBtn.addEventListener("click", showSidebar);
+    closeBtn.addEventListener("click", closeSidebar);
+    themeToggler.addEventListener("click", toggleDarkTheme);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      themeTogglerColor.removeEventListener("click", toggleBlueTheme);
+      menuBtn.removeEventListener("click", showSidebar);
+      closeBtn.removeEventListener("click", closeSidebar);
+      themeToggler.removeEventListener("click", toggleDarkTheme);
+    };
   }, []);
 
   const storeLists = storeData?.map((store, index) => {
@@ -26,12 +74,20 @@ const Store = ({ loginUser }) => {
         <td>Mandalay</td>
         <td>{store.userType}</td>
         <td>
-          <a className="warning" href="/store/edit">
+          <a
+            style={{ fontSize: "15px" }}
+            className="warning"
+            href="/store/edit"
+          >
             Edit
           </a>
         </td>
         <td>
-          <a className="primary" href="/store/delete">
+          <a
+            style={{ fontSize: "15px", color: "var(--color-danger)" }}
+            className="primary"
+            href="/store/delete"
+          >
             Delete
           </a>
         </td>
@@ -69,7 +125,7 @@ const Store = ({ loginUser }) => {
           <a href="/" className="logo">
             <img src={Logo} alt="Logo" />
             <h2>
-              KY<span className="danger">N</span>
+              KY<span className="primary">N</span>
             </h2>
           </a>
           <div className="close" id="close-btn">
@@ -240,16 +296,6 @@ const Store = ({ loginUser }) => {
                   alt="Google Profile"
                 />
               )}
-              {/* <img
-                src={`https://graph.facebook.com/${loginUser.picture}/picture`}
-                alt="profile-image"
-              /> */}
-              {/* <img src={Image1} alt="image" /> */}
-
-              {/* <img
-                src={`https://m.facebook.com/platform/profilepic/?asid=1530678281105969&height=120&width=120`}
-                alt=""
-              /> */}
             </div>
           </div>
         </div>

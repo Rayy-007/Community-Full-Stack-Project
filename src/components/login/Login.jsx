@@ -64,7 +64,16 @@ const Login = ({
         <div className="orLine">Or</div>
 
         {isLoading ? (
-          <div>Loading......</div>
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         ) : (
           <div className="social-form">
             <GoogleOAuthProvider clientId={clientId}>
