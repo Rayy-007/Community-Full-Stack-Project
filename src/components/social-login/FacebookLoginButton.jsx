@@ -5,7 +5,7 @@ const FacebookLoginButton = ({ onHandleFacebookLoginSuccess }) => {
   return (
     <FacebookLogin
       className="social facebook"
-      href="/facebook-login"
+      // href="/facebook-login"
       appId="280211087819312"
       autoLoad={false}
       fields="name, email, picture"

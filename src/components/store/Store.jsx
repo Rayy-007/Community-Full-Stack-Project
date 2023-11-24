@@ -5,8 +5,63 @@ import Image3 from "../../assets/image3.png";
 import Image4 from "../../assets/image4.png";
 
 import { Logo } from "../ImageImport";
+import { useEffect, useState } from "react";
 const Store = ({ loginUser }) => {
-  console.log(loginUser);
+  const [storeData, setStoreData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/store")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setStoreData(data);
+      });
+  }, []);
+
+  const storeLists = storeData?.map((store, index) => {
+    return (
+      <tr key={index}>
+        <td>{store.name}</td>
+        <td>{store.email}</td>
+        <td>Mandalay</td>
+        <td>{store.userType}</td>
+        <td>
+          <a className="warning" href="/store/edit">
+            Edit
+          </a>
+        </td>
+        <td>
+          <a className="primary" href="/store/delete">
+            Delete
+          </a>
+        </td>
+      </tr>
+    );
+  });
+
+  const updateLists = storeData?.map((store, index) => {
+    return (
+      <div key={index} className="update">
+        <div className="profile-photo">
+          {store?.userType == "Facebook" ? (
+            <img
+              src={`http://graph.facebook.com/${store?.userID}/picture`}
+              alt="Facebook Profile"
+            />
+          ) : (
+            <img src={store?.picture} alt="Google Profile" />
+          )}
+        </div>
+        <div className="message">
+          <p>
+            <b>{store?.name}</b> has registered in KYN App.
+          </p>
+          <small className="text-muted">2 Minutes Ago</small>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <section className="container store">
       <aside>
@@ -134,27 +189,12 @@ const Store = ({ loginUser }) => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>User Type</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>{loginUser.name}</td>
-                <td>{loginUser.email}</td>
-                <td>Mandalay</td>
-                <td>
-                  <a className="warning" href="/store/edit">
-                    Edit
-                  </a>
-                </td>
-                <td>
-                  <a className="primary" href="/store/delete">
-                    Delete
-                  </a>
-                </td>
-              </tr>
-            </tbody>
+            <tbody>{storeLists}</tbody>
           </table>
           <a href="#">Show All</a>
         </div>
@@ -180,72 +220,44 @@ const Store = ({ loginUser }) => {
             <span className="material-icons-sharp">dark_mode</span>
           </div>
           <div className="profile">
-            {/* ----------------------------------
-                ----------------
-                -----
-                IN Here I will have to insert data from sever 
-             
-            */}
             <div className="info">
               <p>
-                Hey, <b>{loginUser.name}</b>
+                Hey, <b>{storeData[storeData.length - 1]?.name}</b>
               </p>
               {/* <small className="text-muted">Admin</small> */}
             </div>
             <div className="profile-photo">
+              {storeData[storeData.length - 1]?.userType == "Facebook" ? (
+                <img
+                  src={`http://graph.facebook.com/${
+                    storeData[storeData.length - 1]?.userID
+                  }/picture`}
+                  alt="Facebook Profile"
+                />
+              ) : (
+                <img
+                  src={storeData[storeData.length - 1]?.picture}
+                  alt="Google Profile"
+                />
+              )}
               {/* <img
                 src={`https://graph.facebook.com/${loginUser.picture}/picture`}
                 alt="profile-image"
               /> */}
               {/* <img src={Image1} alt="image" /> */}
-              <img src={loginUser.picutre} alt="" />
+
+              {/* <img
+                src={`https://m.facebook.com/platform/profilepic/?asid=1530678281105969&height=120&width=120`}
+                alt=""
+              /> */}
             </div>
           </div>
-          {/* -----
-              ----------------
-              ---------------------------------- */}
         </div>
         {/* <!-- end of Top --> */}
 
         <div className="recent-updates">
           <h2>Recent Updates</h2>
-          <div className="updates">
-            <div className="update">
-              <div className="profile-photo">
-                <img src={Image1} />
-              </div>
-              <div className="message">
-                <p>
-                  <b>Rayy</b> received his order of Night lion tech GPS drone.
-                </p>
-                <small className="text-muted">2 Minutes Ago</small>
-              </div>
-            </div>
-
-            <div className="update">
-              <div className="profile-photo">
-                <img src={Image3} />
-              </div>
-              <div className="message">
-                <p>
-                  <b>Rayy</b> received his order of Night lion tech GPS drone.
-                </p>
-                <small className="text-muted">2 Minutes Ago</small>
-              </div>
-            </div>
-
-            <div className="update">
-              <div className="profile-photo">
-                <img src={Image4} />
-              </div>
-              <div className="message">
-                <p>
-                  <b>Rayy</b> received his order of Night lion tech GPS drone.
-                </p>
-                <small className="text-muted">2 Minutes Ago</small>
-              </div>
-            </div>
-          </div>
+          <div className="updates">{updateLists}</div>
         </div>
         {/* <!--------------------  End of Recent Update --------------------> */}
       </div>

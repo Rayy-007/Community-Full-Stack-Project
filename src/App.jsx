@@ -43,6 +43,7 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setLoginUser(data);
       })
       .catch((err) => {
@@ -52,6 +53,7 @@ const App = ({ setLoginUser }) => {
 
   // Sending Google data to the Server
   const onHandleGoogleLogin = (ggUserdata) => {
+    console.log(ggUserdata);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -74,6 +76,7 @@ const App = ({ setLoginUser }) => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setLoginUser(data);
       })
       .catch((err) => {
