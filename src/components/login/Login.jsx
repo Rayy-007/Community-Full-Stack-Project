@@ -11,6 +11,9 @@ const Login = ({
   onHandleGoogleLogin,
   isLoading,
   onHandleLogin,
+  showAlert,
+  setShowAlert,
+  loginAttempt,
 }) => {
   // Not Shwoing Footer in Login Page
   useEffect(() => {
@@ -61,6 +64,18 @@ const Login = ({
 
   return (
     <section className="login-container">
+      {loginAttempt === 0 && (
+        <div className="alert">
+          Wrong many times! Please wait 20s and try again later!
+        </div>
+      )}
+      {showAlert && (
+        <div className="alert">
+          <p>Wrong User Name and Password</p>
+          <button onClick={() => setShowAlert(false)}>Ok</button>
+        </div>
+      )}
+
       <div className="left">
         <div className="left-image">
           <img src={loginPoeple} alt="Animated People" />
@@ -91,7 +106,13 @@ const Login = ({
               required
             />
 
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className={`btn btn-primary ${
+                loginAttempt === 0 ? "disable" : ""
+              }`}
+              disabled={loginAttempt === 0}
+            >
               Login
             </button>
           </form>

@@ -15,6 +15,8 @@ import { useState } from "react";
 const App = ({ setLoginUser }) => {
   const [showFooter, setShowFooter] = useState(true);
   const [isLoading, setIsLoading] = useState(false); // Add loading state
+  const [showAlert, setShowAlert] = useState(false); // For showing wrong user name and password message
+  const [loginAttempt, setLoginAttempt] = useState(3);
 
   const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ const App = ({ setLoginUser }) => {
     setTimeout(() => {
       setIsLoading(false);
       navigate("/store");
-    }, 3000); // Adjust the delay time as needed
+    }, 3000);
 
     fetch("http://localhost:8080/api/facebook-login", {
       method: "POST",
@@ -56,7 +58,7 @@ const App = ({ setLoginUser }) => {
     setTimeout(() => {
       setIsLoading(false);
       navigate("/store");
-    }, 3000); // Adjust the delay time as needed
+    }, 3000);
 
     fetch("http://localhost:8080/api/google-login", {
       method: "POST",
@@ -81,14 +83,14 @@ const App = ({ setLoginUser }) => {
       });
   };
 
-  // Sending Google data to the Server
+  // Sending Normal Register form data to the Server
   const onHandleRegister = (registerData) => {
     console.log(registerData);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       navigate("/store");
-    }, 3000); // Adjust the delay time as needed
+    }, 3000);
 
     fetch("http://localhost:8080/api/register", {
       method: "POST",
@@ -115,7 +117,6 @@ const App = ({ setLoginUser }) => {
   // Sending login data to the server
   const onHandleLogin = (loginData) => {
     setIsLoading(true);
-
     fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: {
@@ -137,9 +138,8 @@ const App = ({ setLoginUser }) => {
       .catch((err) => {
         console.error("Error during login: ", err);
         setIsLoading(false);
-        alert(
-          "Authentication failed. Please check your username and password."
-        );
+        setShowAlert(true);
+        setLoginAttempt((prev) => prev - 1);
       });
   };
 
@@ -173,6 +173,9 @@ const App = ({ setLoginUser }) => {
                   onHandleGoogleLogin={onHandleGoogleLogin}
                   isLoading={isLoading}
                   onHandleLogin={onHandleLogin}
+                  showAlert={showAlert}
+                  setShowAlert={setShowAlert}
+                  loginAttempt={loginAttempt}
                 />
               }
             />

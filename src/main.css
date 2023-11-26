@@ -201,3 +201,41 @@ textarea {
   font-weight: 600;
   text-decoration: underline;
 }
+
+/* ======================
+    Error Alert Message
+    ===================== */
+.alert {
+  position: fixed;
+  top: 50px;
+  right: 33%;
+
+  width: 350px;
+  background-color: rgb(172, 20, 20);
+  color: var(--white-color);
+  font-size: var(--font-normal);
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.alert button {
+  background-color: var(--secondary-color);
+  color: var(--black-color);
+  font-size: var(--font-normal);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ==================
+    Disable Button
+    ================= */
+.disable {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
