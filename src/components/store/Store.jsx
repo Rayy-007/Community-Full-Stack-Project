@@ -108,11 +108,12 @@ const Store = () => {
               src={`http://graph.facebook.com/${store?.userID}/picture`}
               alt="Facebook Profile"
             />
-          ) : store?.userType == "Google" ? (
-            <img src={store?.picture} alt="Google Profile" />
           ) : (
             <img src={Image1} alt="Normal Profile" />
           )}
+          {/* store?.userType == "Google" ? (
+            <img src={store?.picture} alt="Google Profile" />
+          ) :  */}
         </div>
         <div className="message">
           <p>
@@ -296,14 +297,15 @@ const Store = () => {
                   }/picture`}
                   alt="Facebook Profile"
                 />
-              ) : storeData[storeData.length - 1]?.userType == "Google" ? (
+              ) : (
+                <img src={Image1} alt="Normal Profile" />
+              )}
+              {/* storeData[storeData.length - 1]?.userType == "Google" ? (
                 <img
                   src={storeData[storeData.length - 1]?.picture}
                   alt="Google Profile"
                 />
-              ) : (
-                <img src={Image1} alt="Normal Profile" />
-              )}
+              ) : */}
             </div>
           </div>
         </div>
