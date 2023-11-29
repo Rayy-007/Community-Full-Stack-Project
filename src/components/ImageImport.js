@@ -12,6 +12,7 @@ import FBLogo from "../assets/facebook.png";
 import GGLogo from "../assets/google.png";
 import registerPeople from "../assets/register-people.png";
 import loginPoeple from "../assets/login-people.png";
+import avator from "../assets/avator.png";
 
 export {
   Logo,
