@@ -1,5 +1,5 @@
 import "./store.css";
-import Image1 from "../../assets/image3.png";
+import { avator } from "../ImageImport";
 import { Link, NavLink } from "react-router-dom";
 
 import { Logo } from "../ImageImport";
@@ -109,7 +109,7 @@ const Store = () => {
               alt="Facebook Profile"
             />
           ) : (
-            <img src={Image1} alt="Normal Profile" />
+            <img src={avator} alt="Normal Profile" />
           )}
           {/* store?.userType == "Google" ? (
             <img src={store?.picture} alt="Google Profile" />
