@@ -6,5 +6,6 @@ import Contact from "./contact/Contact";
 import Register from "./register/Register";
 import Login from "./login/Login";
 import Terms from "./terms/Terms";
+import Store from "./store/Store";
 
-export { Navbar, Home, Footer, About, Contact, Register, Login, Terms };
+export { Navbar, Home, Footer, About, Contact, Register, Login, Terms, Store };
