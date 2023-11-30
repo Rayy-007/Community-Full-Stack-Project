@@ -29,4 +29,5 @@ export {
   GGLogo,
   registerPeople,
   loginPoeple,
+  avator,
 };

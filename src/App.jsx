@@ -8,8 +8,9 @@ import {
   Register,
   Login,
   Footer,
+  Terms,
 } from "./components/PageImport";
-import Terms from "./components/terms/Terms";
+
 import { useState } from "react";
 
 const App = ({ setLoginUser }) => {
